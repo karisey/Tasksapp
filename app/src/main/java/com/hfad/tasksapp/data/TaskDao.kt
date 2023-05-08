@@ -12,7 +12,7 @@ interface TaskDao {
     @Insert
     suspend fun insertAll(tasks: List<Task>)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(task: Task) // This will update the record with a matching task Id
 
     @Delete
